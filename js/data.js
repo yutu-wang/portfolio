@@ -26,12 +26,15 @@ const projectsData = {
             <h4>表現形式</h4>
             <p>作品由人類蠟像和透明翅膀組成。<br>透明翅膀象徵人類所追求的高度進步，以翅膀作為人類妄圖挑戰神權、超越神權的象徵。翅膀上投射了太陽風與行星際磁場之數據，代表朝著太陽前行、逼近太陽的意象。<br>人類蠟像會被由數據資料控制的高溫燈光照射，高溫燈光在此象徵太陽。人類在逐日的過程中，靠著翅膀拉近了和太陽的距離，卻不斷被摧毀、融化，最終消失。</p>
         `,
+        embedUrls: [
+            "https://drive.google.com/file/d/1tXzu0eFaoQzhaeuZ2VYulMdPhi8uGPzp/preview"
+        ],
         bgImage: "images/依卡洛斯2.JPG",
         galleryLayouts: [
             { type: "grid-3", images: ["images/依卡洛斯3.JPG", "images/依卡洛斯5.JPG", "images/依卡洛斯4.JPG"] },
             { type: "large", images: ["images/依卡洛斯7.png"] }
         ],
-        video: "images/新世紀預言-依卡洛斯.mov#t=7",
+        // video: "images/新世紀預言-依卡洛斯.mov#t=7",
         category: "New Media Art"
     },
     "nailglass": {
@@ -128,7 +131,11 @@ const projectsData = {
             <br>
             <p>本作品為實驗性創作，著重於材質與動作之間的關係測試，探索柔性機構如何表現身體感與變形過程。</p>
         `,
-        video: "images/脊椎側彎.mp4#t=10",
+        embedUrls: [
+            "https://drive.google.com/file/d/1_smEcRa4nM98LZ855RbwQsdmSjo1qgfD/preview",
+            "https://drive.google.com/uc?export=embed&id=1_smEcRa4nM98LZ855RbwQsdmSjo1qgfD"
+        ],
+        // video: "images/脊椎側彎.mp4#t=10",
         bgImage: "images/脊椎側彎1.png",
         galleryLayouts: [
             {
