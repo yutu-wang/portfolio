@@ -32,8 +32,10 @@ const projectsData = {
         bgImage: "images/依卡洛斯2.JPG",
         galleryLayouts: [
             { type: "grid-3", images: ["images/依卡洛斯3.JPG", "images/依卡洛斯5.JPG", "images/依卡洛斯4.JPG"] },
-            { type: "large", images: ["images/依卡洛斯7.png"] }
+            { type: "large", images: ["images/依卡洛斯7.png"] },
+            { type: "grid-2", images: ["images/依卡洛斯8.JPG", "images/依卡洛斯9.JPG"] }
         ],
+       
         // video: "images/新世紀預言-依卡洛斯.mov#t=7",
         category: "New Media Art"
     },
@@ -183,7 +185,7 @@ const projectsData = {
             <p>透過即時回饋與環境擾動，使內在情緒狀態得以被觀看與感知，並引導使用者在干擾中與自身共處。</p>
         `,
         bgImage: "images/心潮4.png",
-        images: ["images/心潮1.jpg", "images/心潮2.jpg"],
+        images: ["images/心潮3.jpg", "images/心潮2.jpg"],
         category: "Experimental Lab"
     }
 };
