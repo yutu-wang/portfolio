@@ -135,7 +135,6 @@ const projectsData = {
         `,
         embedUrls: [
             "https://drive.google.com/file/d/1_smEcRa4nM98LZ855RbwQsdmSjo1qgfD/preview",
-            "https://drive.google.com/uc?export=embed&id=1_smEcRa4nM98LZ855RbwQsdmSjo1qgfD"
         ],
         // video: "images/脊椎側彎.mp4#t=10",
         bgImage: "images/脊椎側彎1.png",
