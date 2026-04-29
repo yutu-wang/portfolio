@@ -158,9 +158,9 @@ const projectsData = {
             <p>將觸覺轉譯成一種介於聲音與情緒之間的訊號，試著發明一種新的感覺——第nya感。</p>
         `,
         video: "images/第nya感.MOV",
-        bgImage: "images/第nya感.JPG",
+        bgImage: "images/nya1.JPG",
         galleryLayouts: [
-            { type: "grid-2", images: ["images/第nya感.JPG", "images/第nya感2.JPG"] }
+            { type: "grid-2", images: ["images/nya1.JPG", "images/第nya感2.JPG"] }
         ],
         category: "Experimental Lab"
     },
