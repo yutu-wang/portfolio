@@ -31,9 +31,9 @@ const projectsData = {
         ],
         bgImage: "images/依卡洛斯2.JPG",
         galleryLayouts: [
-            { type: "grid-3", images: ["images/依卡洛斯3.JPG", "images/依卡洛斯5.JPG", "images/依卡洛斯4.JPG"] },
+            { type: "grid-3", images: ["images/依卡洛斯3.JPG", "images/依卡洛斯5.JPG", "images/依卡洛斯4.jpg"] },
             { type: "large", images: ["images/依卡洛斯7.png"] },
-            { type: "grid-2", images: ["images/依卡洛斯8.JPG", "images/依卡洛斯9.JPG"] }
+            { type: "grid-2", images: ["images/依卡洛斯8.jpg", "images/依卡洛斯9.jpg"] }
         ],
        
         // video: "images/新世紀預言-依卡洛斯.mov#t=7",
