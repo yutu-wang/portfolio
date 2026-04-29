@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | 王語彤 Yu-Tung Wang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Outfit:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+</head>
+
+<body class="project-page bg-light">
+    <nav class="navbar scrolled">
+        <a href="index.html" class="logo" style="text-decoration:none; color:inherit;">Yutung Wang.</a>
+        <div class="back-link">
+            <a href="index.html">← Back to Portfolio</a>
+        </div>
+    </nav>
+
+    <main class="project-container">
+        <div class="project-header fade-up">
+            <p class="category-tag" id="project-category"></p>
+            <h1 class="project-title-large" id="project-title">Loading...</h1>
+            <p class="project-meta-large" id="project-meta"></p>
+        </div>
+
+        <div class="project-content">
+            <div class="project-text fade-up delay-1" id="project-desc">
+                <!-- Description will be injected here -->
+            </div>
+            <div class="project-gallery fade-up delay-2" id="project-gallery">
+                <!-- Images will be injected here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Wang, Yutung. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Parse URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (projectId && projectsData[projectId]) {
+                const project = projectsData[projectId];
+
+                // Set text content
+                document.title = project.title + " | Yu-Tung Wang";
+                document.getElementById('project-category').textContent = project.category;
+                document.getElementById('project-title').textContent = project.title;
+                document.getElementById('project-meta').textContent = project.meta;
+                document.getElementById('project-desc').innerHTML = project.description;
+
+                // Set background image if provided
+                if (project.bgImage) {
+                    document.body.style.background = `linear-gradient(to bottom, rgba(13, 12, 11, 0.8) 0%, rgba(13, 12, 11, 0.95) 100%), url('${project.bgImage}') center/cover no-repeat fixed`;
+                }
+
+                // Create gallery images and videos
+                const gallery = document.getElementById('project-gallery');
+
+                // Add embedded videos/iframes first if they exist
+                if (project.embedUrls) {
+                    project.embedUrls.forEach(url => {
+                        const iframeContainer = document.createElement('div');
+                        // Responsive 16:9 iframe container
+                        iframeContainer.style.position = 'relative';
+                        iframeContainer.style.width = '100%';
+                        iframeContainer.style.paddingBottom = '56.25%';
+                        iframeContainer.style.marginBottom = '2rem';
+
+                        const iframe = document.createElement('iframe');
+                        iframe.src = url;
+                        iframe.style.position = 'absolute';
+                        iframe.style.top = '0';
+                        iframe.style.left = '0';
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        iframe.style.border = 'none';
+                        iframe.style.borderRadius = '12px';
+                        iframe.style.boxShadow = '0 10px 40px rgba(0,0,0,0.08)';
+                        iframe.allowFullscreen = true;
+                        iframe.allow = "camera; microphone; autoplay; fullscreen";
+
+                        iframeContainer.appendChild(iframe);
+                        gallery.appendChild(iframeContainer);
+                    });
+                }
+                // Add native videos if they exist
+                if (project.video) {
+                    const videoUrls = Array.isArray(project.video) ? project.video : [project.video];
+                    videoUrls.forEach(url => {
+                        const video = document.createElement('video');
+                        video.src = url;
+                        video.controls = true;
+                        video.className = project.shrinkImages ? 'gallery-img gallery-img-small' : 'gallery-img';
+                        video.style.marginBottom = '2rem';
+                        gallery.appendChild(video);
+                    });
+                }
+
+                if (project.galleryLayouts) {
+                    project.galleryLayouts.forEach(layout => {
+                        if (layout.text) {
+                            const textDiv = document.createElement('div');
+                            textDiv.innerHTML = layout.text;
+                            textDiv.className = 'gallery-text-block';
+                            gallery.appendChild(textDiv);
+                        }
+
+                        if (layout.type && layout.type.startsWith('grid-')) {
+                            const gridColumns = Number(layout.type.split('-')[1]);
+                            const grid = document.createElement('div');
+                            grid.className = 'gallery-grid-3';
+                            if (!Number.isNaN(gridColumns) && gridColumns > 0) {
+                                grid.style.gridTemplateColumns = `repeat(${gridColumns}, 1fr)`;
+                            }
+                            layout.images.forEach((imgSrc, index) => {
+                                const wrapper = document.createElement('div');
+                                wrapper.className = 'grid-img-wrapper';
+                                const img = document.createElement('img');
+                                img.src = imgSrc;
+                                img.alt = project.title;
+                                img.className = 'gallery-img';
+                                if (layout.zoomImages && layout.zoomImages.includes(index)) {
+                                    img.style.transform = 'scale(2.2)';
+                                }
+                                wrapper.appendChild(img);
+                                grid.appendChild(wrapper);
+                            });
+                            gallery.appendChild(grid);
+                        } else if (layout.type === 'large') {
+                            layout.images.forEach(imgSrc => {
+                                const img = document.createElement('img');
+                                img.src = imgSrc;
+                                img.alt = project.title;
+                                img.className = 'gallery-img';
+                                gallery.appendChild(img);
+                            });
+                        }
+                    });
+                } else if (project.images) {
+                    project.images.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.alt = project.title;
+                        img.className = project.shrinkImages ? 'gallery-img gallery-img-small' : 'gallery-img';
+                        gallery.appendChild(img);
+                    });
+                }
+
+                // Trigger animations
+                setTimeout(() => {
+                    document.querySelectorAll('.fade-up').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 100);
+
+            } else {
+                document.getElementById('project-title').textContent = "Project not found";
+                document.getElementById('project-desc').innerHTML = "<p>Sorry, the requested project could not be found. Please go back to the home page.</p>";
+            }
+        });
+    </script>
+</body>
+
+</html>
